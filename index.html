@@ -5,19 +5,27 @@
     <script src="data_generator.js"></script>
   </head>
   <body>
+    <div>
+      <p class="name">@shawndrost</p>
+        <ul class="shawn"></ul>
+      <p>Second</p>
+        <ul></ul>
+    </div>
     <script>
 
       $(document).ready(function(){
-        var $body = $('body');
-        $body.html('');
+        var $ul = $('.shawn');
+        $ul.html('');
 
-        var index = streams.home.length - 1;
-        while(index >= 0){
+        
+        for (var index = streams.home.length - 1; index >= 0; index--){
           var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
-          index -= 1;
+            var $tweet = $('<li></li>');
+            $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          if (tweet.user === "shawndrost") {
+            $tweet.appendTo($ul);
+          }
+          else if (tweet.user === "shawndrost")
         }
 
       });
