@@ -5,31 +5,52 @@
     <script src="data_generator.js"></script>
   </head>
   <body>
+    <h1>My Favorite Tweeters</h1>
     <div>
-      <p class="name">@shawndrost</p>
+      <p class="name">@douglascalhoun</p>
+        <ul class="doug"></ul>
+      <p>@mracus</p>
+        <ul class="mracus"></ul>
+      <p>@sharksforcheap</p>
+        <ul class="shark"></ul>
+      <p>@shawndrost</p>
         <ul class="shawn"></ul>
-      <p>Second</p>
-        <ul></ul>
     </div>
     <script>
 
       $(document).ready(function(){
-        var $ul = $('.shawn');
-        $ul.html('');
+        var $doug = $('.doug');
+        $doug.html('');
+         var $mracus = $('.mracus');
+        $mracus.html('');
+         var $shark = $('.shark');
+        $shark.html('');
+         var $shawn = $('.shawn');
+        $shawn.html('');
 
         
         for (var index = streams.home.length - 1; index >= 0; index--){
           var tweet = streams.home[index];
             var $tweet = $('<li></li>');
             $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          if (tweet.user === "shawndrost") {
-            $tweet.appendTo($ul);
+          if (tweet.user === "douglascalhoun") {
+            $tweet.appendTo($doug);
           }
-          else if (tweet.user === "shawndrost")
+          else if (tweet.user === "mracus") {
+            $tweet.appendTo($mracus);
+          }
+          else if (tweet.user === "sharksforcheap") {
+            $tweet.appendTo($shark);
+          }
+          else if (tweet.user === "shawndrost") {
+            $tweet.appendTo($shawn);
+          }
+
         }
-
       });
-
+        //"sharksforcheap", "mracus", "douglascalhoun"
     </script>
   </body>
 </html>
+
+
