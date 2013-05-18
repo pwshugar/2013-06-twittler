@@ -5,7 +5,8 @@
     <script src="data_generator.js"></script>
   </head>
   <body>
-    <h1>My Favorite Tweeters</h1>
+    <h1>My Favorite Tweetlers</h1>
+    <button class="refresh">Refresh New Tweets</button>
     <div>
       <p class="name">@douglascalhoun</p>
         <ul class="doug"></ul>
@@ -19,37 +20,75 @@
     <script>
 
       $(document).ready(function(){
+
         var $doug = $('.doug');
         $doug.html('');
-         var $mracus = $('.mracus');
+        var $mracus = $('.mracus');
         $mracus.html('');
-         var $shark = $('.shark');
+        var $shark = $('.shark');
         $shark.html('');
-         var $shawn = $('.shawn');
+        var $shawn = $('.shawn');
         $shawn.html('');
 
-        
-        for (var index = streams.home.length - 1; index >= 0; index--){
-          var tweet = streams.home[index];
-            var $tweet = $('<li></li>');
-            $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          if (tweet.user === "douglascalhoun") {
-            $tweet.appendTo($doug);
-          }
-          else if (tweet.user === "mracus") {
-            $tweet.appendTo($mracus);
-          }
-          else if (tweet.user === "sharksforcheap") {
-            $tweet.appendTo($shark);
-          }
-          else if (tweet.user === "shawndrost") {
-            $tweet.appendTo($shawn);
-          }
+        var tweetDisplay = function(elem, loc){
+          var $tweet = $('<li></li>');
+          $tweet.text(elem).appendTo(loc);
+         };
 
-        }
+        var group = function(arr, loc) {
+          
+          arr = arr.slice(arr.length - 5, arr.length);
+          for (var i=0; i<arr.length;i++) {
+            tweetDisplay(arr[i], loc);
+          }
+        };
+
+        var onlyOne = function(arr, loc) {
+          tweetDisplay(arr[arr.length-1], loc);
+        };
+
+        var dougArray = [];
+        var mracusArray = [];
+        var sharkArray = [];
+        var shawnArray = [];
+
+        var buildArrays = function() {
+          for (var i = 0; i < streams.home.length - 1; i++){
+            var tweet = streams.home[i];
+            var d = new Date();
+            d.setDate(0);
+            var $tweet = $('<li></li>');
+            var newTweet = '@' + tweet.user + ': ' + tweet.message + " " + d;
+            if (tweet.user === "douglascalhoun") {
+              dougArray.push(newTweet);
+            }
+            else if (tweet.user === "mracus") {
+              mracusArray.push(newTweet);
+            }
+            else if (tweet.user === "sharksforcheap") {
+              sharkArray.push(newTweet);
+            }
+            else if (tweet.user === "shawndrost") {
+              shawnArray.push(newTweet);
+            }
+          }
+        };
+        
+        buildArrays();  
+        setInterval(function(){buildArrays()}, 1000);
+
+        $(".refresh").click(function(){
+          $("li").remove();
+          onlyOne(dougArray, $doug);
+          onlyOne(mracusArray, $mracus);
+          onlyOne(sharkArray, $shark);
+          onlyOne(shawnArray, $shawn);
+        });
+
       });
         //"sharksforcheap", "mracus", "douglascalhoun"
     </script>
+
   </body>
 </html>
 
