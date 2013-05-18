@@ -8,13 +8,13 @@
     <h1>My Favorite Tweetlers</h1>
     <button class="refresh">Refresh New Tweets</button>
     <div>
-      <p class="name">@douglascalhoun</p>
+      <p></p><button class="d">@douglascalhoun</button>
         <ul class="doug"></ul>
-      <p>@mracus</p>
+      <p></p><button class="d">@mracus</button>
         <ul class="mracus"></ul>
-      <p>@sharksforcheap</p>
+      <p></p><button class="d">@sharksforcheap</button>
         <ul class="shark"></ul>
-      <p>@shawndrost</p>
+      <p></p><button class="d">@shawndrost</button>
         <ul class="shawn"></ul>
     </div>
     <script>
@@ -32,7 +32,7 @@
 
         var tweetDisplay = function(elem, loc){
           var $tweet = $('<li></li>');
-          $tweet.text(elem).appendTo(loc);
+          $tweet.text(elem).prependTo(loc);
          };
 
         var group = function(arr, loc) {
@@ -51,31 +51,26 @@
         var mracusArray = [];
         var sharkArray = [];
         var shawnArray = [];
+        var tweetTest;
 
-        var buildArrays = function() {
-          for (var i = 0; i < streams.home.length - 1; i++){
+        var buildArrays = function(x) {
+          for (var i = x; i < streams.home.length - 1; i++){
             var tweet = streams.home[i];
             var d = new Date();
             d.setDate(0);
             var $tweet = $('<li></li>');
             var newTweet = '@' + tweet.user + ': ' + tweet.message + " " + d;
-            if (tweet.user === "douglascalhoun") {
-              dougArray.push(newTweet);
-            }
-            else if (tweet.user === "mracus") {
-              mracusArray.push(newTweet);
-            }
-            else if (tweet.user === "sharksforcheap") {
-              sharkArray.push(newTweet);
-            }
-            else if (tweet.user === "shawndrost") {
-              shawnArray.push(newTweet);
-            }
+
+            if (tweet.user === "douglascalhoun" && tweet !== tweetTest) dougArray.push(newTweet);
+            else if (tweet.user === "mracus" && tweet !== tweetTest) mracusArray.push(newTweet);
+            else if (tweet.user === "sharksforcheap" && tweet !== tweetTest) sharkArray.push(newTweet);
+            else if (tweet.user === "shawndrost" && tweet !== tweetTest) shawnArray.push(newTweet);
           }
+          tweetTest = tweet;
         };
-        
-        buildArrays();  
-        setInterval(function(){buildArrays()}, 1000);
+
+        buildArrays(0);  
+        setInterval(function(){buildArrays(streams.home.length - 2)}, 1);
 
         $(".refresh").click(function(){
           $("li").remove();
