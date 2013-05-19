@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
   </head>
@@ -8,13 +9,13 @@
     <h1>My Favorite Tweetlers</h1>
     <button class="refresh">Refresh New Tweets</button>
     <div>
-      <p></p><button class="d">@douglascalhoun</button>
+      <p></p><button class="bdoug">@douglascalhoun</button>
         <ul class="doug"></ul>
-      <p></p><button class="d">@mracus</button>
+      <p></p><button class="bmracus">@mracus</button>
         <ul class="mracus"></ul>
-      <p></p><button class="d">@sharksforcheap</button>
+      <p></p><button class="bshark">@sharksforcheap</button>
         <ul class="shark"></ul>
-      <p></p><button class="d">@shawndrost</button>
+      <p></p><button class="bshawn">@shawndrost</button>
         <ul class="shawn"></ul>
     </div>
     <script>
@@ -37,7 +38,7 @@
 
         var group = function(arr, loc) {
           
-          arr = arr.slice(arr.length - 5, arr.length);
+          arr = arr.slice(arr.length - 7, arr.length);
           for (var i=0; i<arr.length;i++) {
             tweetDisplay(arr[i], loc);
           }
@@ -59,7 +60,7 @@
             var d = new Date();
             d.setDate(0);
             var $tweet = $('<li></li>');
-            var newTweet = '@' + tweet.user + ': ' + tweet.message + " " + d;
+            var newTweet = tweet.message + " - " + d;
 
             if (tweet.user === "douglascalhoun" && tweet !== tweetTest) dougArray.push(newTweet);
             else if (tweet.user === "mracus" && tweet !== tweetTest) mracusArray.push(newTweet);
@@ -78,6 +79,38 @@
           onlyOne(mracusArray, $mracus);
           onlyOne(sharkArray, $shark);
           onlyOne(shawnArray, $shawn);
+        });
+
+        $(".bdoug").click(function(){
+          $("li").remove();
+          onlyOne(mracusArray, $mracus);
+          onlyOne(sharkArray, $shark);
+          onlyOne(shawnArray, $shawn);
+          group(dougArray, $doug);
+        });
+
+        $(".bmracus").click(function(){
+          $("li").remove();
+          onlyOne(dougArray, $doug);
+          onlyOne(sharkArray, $shark);
+          onlyOne(shawnArray, $shawn);
+          group(mracusArray, $mracus);
+        });
+
+        $(".bshark").click(function(){
+          $("li").remove();
+          onlyOne(dougArray, $doug);
+          onlyOne(mracusArray, $mracus);
+          onlyOne(shawnArray, $shawn);
+          group(sharkArray, $shark);
+        });
+
+        $(".bshawn").click(function(){
+          $("li").remove();
+          onlyOne(dougArray, $doug);
+          onlyOne(mracusArray, $mracus);
+          onlyOne(sharkArray, $shark);
+          group(shawnArray, $shawn);
         });
 
       });
