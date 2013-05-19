@@ -1,7 +1,56 @@
 	.refresh {
-		float:right;
+		position:absolute; 
+        
+        margin-left:500px;
+        top:  15px; 
 		width: 100px;
-		background:orange;
+		background:#FFC266;
+		font-family: Georgia;
+		font-size: 18px;
 	}
 
-	h1 {color:green;}
+	img {
+	position: fixed;
+	margin-top: 500px;
+	max-height: 150px;
+	max-width: 200px;
+	width: 120px;
+	height: 120px;
+	}
+
+	h1 {
+		color:yellow;
+		font-size: 50px;
+		font-style: italic;
+	}
+	
+	body { background-image: url(http://farm8.staticflickr.com/7456/8751626221_b6ec08f08e_h.jpg); }
+
+	li {
+		font-size: 21px;
+		color: black;
+	}
+
+	button {font-size: 23px;}
+
+	.bdoug {
+		background: #66E066;
+		font-size: 23px;
+	}
+
+	.bmracus {
+		background: #66E066;
+		font-size: 23px;
+	}
+
+	.bshark {
+		background: #66E066;
+		font-size: 23px;
+	}
+
+	.bshawn {
+		background: #66E066;
+		font-size: 23px;
+	}
+
+
