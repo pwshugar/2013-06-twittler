@@ -9,22 +9,16 @@
 		font-size: 18px;
 	}
 
-	img {
-	position: fixed;
-	margin-top: 500px;
-	max-height: 150px;
-	max-width: 200px;
-	width: 120px;
-	height: 120px;
-	}
-
 	h1 {
-		color:yellow;
+		color:white;
 		font-size: 50px;
 		font-style: italic;
 	}
 	
-	body { background-image: url(http://farm8.staticflickr.com/7456/8751626221_b6ec08f08e_h.jpg); }
+	body { 
+		background-image: url(http://farm8.staticflickr.com/7456/8751626221_b6ec08f08e_h.jpg);
+		background-size: 100%;
+	 }
 
 	li {
 		font-size: 21px;
